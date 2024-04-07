@@ -3,6 +3,7 @@ import connectDB from "./dbconfig";
 
 import express from "express";
 import userRoutes from "./routes/user.routes";
+import categoryRoutes from "./routes/category.routes";
 const application = express();
 
 application.use(express.json());
@@ -16,6 +17,7 @@ application.get('/ping', (req: Request, res: Response) => {
 });
 
 application.use("/user", userRoutes);
+application.use("/categories", categoryRoutes);
 
 application.listen(PORT, () => {
     console.log('Server up and running');

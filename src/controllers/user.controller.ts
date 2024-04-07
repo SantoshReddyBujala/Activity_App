@@ -3,7 +3,8 @@ import User from "../models/user-model";
 import bcrypt from "bcrypt";
 import { Types } from "mongoose";
 import jwt from "jsonwebtoken";
-import IUser from "../types";
+import { IUser } from "../types";
+
 
 
 
