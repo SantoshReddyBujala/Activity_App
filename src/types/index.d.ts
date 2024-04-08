@@ -23,4 +23,15 @@ export interface ICategory {
     color: IColor,
     icon: IIcon
 }
+export interface ITask {
+    _id: string,
+    name: string,
+    user: IUser | string,
+    isCompleted: boolean,
+    categoryId: string,
+    date: string,
+    isEditable: boolean,
+    createdAt: string,
+    updatedAt: string
+}
 

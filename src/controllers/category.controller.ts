@@ -1,12 +1,12 @@
-import { Request, Response } from "express";
+import { Response } from "express";
 import Category from '../models/category-model';
 import { ICategory } from "../types";
 import { AuthRequest } from "../middleware";
 
 export const getAllCategories = async (req: AuthRequest, res: Response) => {
     try {
-        const { user } = req;
-        const categories = await Category.find({ user: user }).exec();
+        const { userId } = req;
+        const categories = await Category.find({ user: userId }).exec();
         return res.send(categories);
     } catch (error) {
         console.log('Error in Get Categories', error);
@@ -17,11 +17,11 @@ export const createCategory = async (req: AuthRequest, res: Response) => {
     try {
         const { name, isEditable, color, icon }: ICategory = req.body;
 
-        const { user } = req;
+        const { userId } = req;
 
         const category = await Category.create({
             name: name,
-            user: user,
+            user: userId,
             isEditable: isEditable,
             color: color,
             icon: icon
@@ -61,7 +61,7 @@ export const updateCategory = async (req: AuthRequest, res: Response) => {
                 .json({ message: `No category Matches ${_id} not found` });
         }
 
-        const { user } = req;
+        const { userId } = req;
 
         const category = await Category.updateOne(
             { _id: _id },
@@ -69,7 +69,7 @@ export const updateCategory = async (req: AuthRequest, res: Response) => {
                 $set:
                 {
                     name: name,
-                    user: user,
+                    user: userId,
                     isEditable: isEditable,
                     color: color,
                     icon: icon

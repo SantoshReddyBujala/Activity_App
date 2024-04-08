@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import User from "../models/user-model";
 
 export interface AuthRequest extends Request {
-    user: string;
+    userId: string;
 }
 export const authenticationMiddleware = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
@@ -17,7 +17,7 @@ export const authenticationMiddleware = async (req: AuthRequest, res: Response, 
         const { _id } = jwt.verify(token, "express");
         const existingUser = await User.findOne({ _id }).exec();
         if (existingUser) {
-            req.user = existingUser.id;
+            req.userId = existingUser.id;
         }
         next()
     } catch (error) {
