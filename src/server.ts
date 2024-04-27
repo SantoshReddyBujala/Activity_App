@@ -1,13 +1,16 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import connectDB from "./dbconfig";
-
 import express from "express";
 import userRoutes from "./routes/user.routes";
 import categoryRoutes from "./routes/category.routes";
 import taskRoutes from "./routes/task.routes";
+import cors from "cors"
+
 const application = express();
 
 application.use(express.json());
+
+application.use(cors())
 
 const PORT = 3600;
 
