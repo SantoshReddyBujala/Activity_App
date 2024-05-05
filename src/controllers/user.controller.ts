@@ -9,7 +9,7 @@ import { IUser } from "../types";
 
 
 const getUserToken = (_id: string | Types.ObjectId) => {
-    const authUserToken = jwt.sign({ _id }, "express", { expiresIn: "7d", })
+    const authUserToken = jwt.sign({ _id }, "express", { expiresIn: "1d", })
     return authUserToken;
 }
 export const createUser = async (req: Request, res: Response) => {

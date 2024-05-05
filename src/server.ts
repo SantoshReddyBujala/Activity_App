@@ -1,10 +1,9 @@
-import { NextFunction, Request, Response } from "express";
+import cors from "cors";
+import express, { Request, Response } from "express";
 import connectDB from "./dbconfig";
-import express from "express";
-import userRoutes from "./routes/user.routes";
 import categoryRoutes from "./routes/category.routes";
 import taskRoutes from "./routes/task.routes";
-import cors from "cors"
+import userRoutes from "./routes/user.routes";
 
 const application = express();
 
