@@ -50,7 +50,7 @@ export const getCategory = async (req: AuthRequest, res: Response) => {
     try {
         const { id } = req.params;
         const category = await Category.findOne({ _id: id }).exec();
-        res.send({ category });
+        res.send(category);
     } catch (error) {
         console.log('Error occurs while det category by id');
         res.send({ error: "Get Category" });
