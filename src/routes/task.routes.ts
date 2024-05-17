@@ -9,7 +9,7 @@ taskRoutes.route("/completed").get(getAllCompletedTasks);
 taskRoutes.route("/today").get(getTodayTasks);
 taskRoutes.route("/tasks-by-categories/:id").get(getAllTasksByCategory);
 taskRoutes.route("/create").post(createTask);
-taskRoutes.route("/task/:id").delete(deleteTask);
+taskRoutes.route("/:id").delete(deleteTask);
 taskRoutes.route("/update/:id").put(toggleTaskStatus);
 taskRoutes.route("/edit/:id").put(editTask);
 

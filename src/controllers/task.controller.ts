@@ -92,14 +92,17 @@ export const toggleTaskStatus = async (req: AuthRequest, res: Response) => {
     }
 }
 
-export const deleteTask = async (req: AuthRequest, res: Response) => {
+export const deleteTask = async (request: AuthRequest, response: Response) => {
     try {
-        const { id } = req.params;
-        await Task.deleteOne({ _id: id });
-        res.send({ message: "Category Deleted" });
+        const { id } = request.params
+        await Task.deleteOne({
+            _id: id,
+        })
+        response.send({ message: "Task deleted" })
     } catch (error) {
-        console.log('Error occurs while delete category');
-        res.send({ error: "Category Deleted" });
+        console.log("error in deleteTask", error)
+        response.send({ error: "Error while deleting task" })
+        throw error
     }
 }
 
